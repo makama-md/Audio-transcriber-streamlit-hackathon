@@ -23,7 +23,8 @@ from nltk.tokenize import word_tokenize
 from nltk.corpus import stopwords
 from nltk.probability import FreqDist
 
-
+nltk.download('punkt')
+nltk.download('stopwords')
 # Streamlit app title and description
 st.title("🔊Audio Transcriber 🖹 and Analysis Tool")
 st.markdown(
