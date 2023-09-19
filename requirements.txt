@@ -1,6 +1,6 @@
 streamlit
 moviepy
-pytube3
+pytube
 nltk
 gtts
 google-cloud-translate
