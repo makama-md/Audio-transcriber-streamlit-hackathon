@@ -41,7 +41,7 @@ with st.sidebar.expander("Features💡"):
     st.write("""
         **Features:**
 
-        - Transcript: Supports various audio formats. direct youtube link or upload video or upload audio file
+        - Transcript: Supports various audio formats. or upload video or upload audio file
         - Translation-text translation into any language
         - Listen Audio -Listen to transcribed text.
         - Text Summarization: summarize  text into concise content
