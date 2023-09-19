@@ -210,8 +210,8 @@ def validate_youtube_link(link):
         yt = YouTube(link)
         video = yt.title
         return True
-    except VideoUnavailable:
-        st.error("Invalid YouTube video link. The video is unavailable.")
+    except VideoUnavailable as e:
+        st.warning(f"The YouTube video link is valid but the video is no longer available. Error: {str(e)}")
         return False
     except Exception as e:
         st.error(f"An error occurred while validating the YouTube link: {str(e)}")
