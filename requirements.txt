@@ -8,5 +8,3 @@ pysummarization
 assemblyai
 textblob
 plotly
-punkt
-stopwords
