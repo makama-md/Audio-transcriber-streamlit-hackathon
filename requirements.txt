@@ -1,8 +1,7 @@
 streamlit
 moviepy
 pytube3
-spacy==3.1.0
-en_core_web_sm==3.1.0
+nltk
 gtts
 google-cloud-translate
 pysummarization
