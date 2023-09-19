@@ -2,6 +2,9 @@ import streamlit as st
 import moviepy.editor as mp
 from pytube import YouTube
 import spacy
+import subprocess
+subprocess.run(['python', '-m', 'spacy', 'download', 'en_core_web_sm'])
+
 from gtts import gTTS  # Import gTTS
 from google.cloud import translate_v2 as translate
 from pytube.exceptions import VideoUnavailable
