@@ -212,9 +212,10 @@ def validate_youtube_link(link):
         return True
     except VideoUnavailable:
         st.error("Invalid YouTube video link. The video is unavailable.")
+        return False
     except Exception as e:
-        st.error(f"Invalid YouTube video link. The video is unavailable.")
-
+        st.error(f"An error occurred while validating the YouTube link: {str(e)}")
+        return False
 
 option = st.selectbox("Select an option:",
                       ["Download from YouTube", "Upload Audio File", "Upload Video to Extract Audio"])
