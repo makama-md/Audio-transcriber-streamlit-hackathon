@@ -219,7 +219,7 @@ def validate_youtube_link(link):
         return False
 
 option = st.selectbox("Select an option:",
-                      ["Download from YouTube", "Upload Audio File", "Upload Video to Extract Audio"])
+                      ["Upload Audio File", "Upload Video to Extract Audio"])
 
 if option == "Download from YouTube":
     # Input field for the YouTube video URL
