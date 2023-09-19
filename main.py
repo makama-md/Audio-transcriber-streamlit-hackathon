@@ -9,7 +9,7 @@ from pysummarization.tokenizabledoc.simple_tokenizer import SimpleTokenizer
 from pysummarization.abstractabledoc.top_n_rank_abstractor import TopNRankAbstractor
 
 tran_api_key = "AIzaSyDcwA_3udNOCN1H88sxixc5R8sTeCnm2Xw"
-translate_client = translate.Client(api_key=tran_api_key)
+translate_client = translate.Client(tran_api_key)
 import os
 import assemblyai as aai
 import tempfile
