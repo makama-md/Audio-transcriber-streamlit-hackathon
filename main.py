@@ -1,32 +1,35 @@
 import streamlit as st
 import moviepy.editor as mp
 from pytube import YouTube
-import spacy
-import subprocess
-subprocess.run(['python', '-m', 'spacy', 'download', 'en_core_web_sm'])
-
 from gtts import gTTS  # Import gTTS
 from google.cloud import translate_v2 as translate
 from pytube.exceptions import VideoUnavailable
 from pysummarization.nlpbase.auto_abstractor import AutoAbstractor
 from pysummarization.tokenizabledoc.simple_tokenizer import SimpleTokenizer
 from pysummarization.abstractabledoc.top_n_rank_abstractor import TopNRankAbstractor
+
 tran_api_key = "AIzaSyDcwA_3udNOCN1H88sxixc5R8sTeCnm2Xw"
 translate_client = translate.Client()
 import os
 import assemblyai as aai
 import tempfile
+
 api_key = "36afd263f766445d9410a1dfde342559"
 aai.settings.api_key = "36afd263f766445d9410a1dfde342559"
 from textblob import TextBlob
 import plotly.express as px
+import nltk
+from nltk.tokenize import word_tokenize
+from nltk.corpus import stopwords
+from nltk.probability import FreqDist
 
+nltk.download('punkt')
+nltk.download('stopwords')
 # Streamlit app title and description
 st.title("🔊Audio Transcriber 🖹 and Analysis Tool")
 st.markdown(
     " &#160; &#160; &#160;Made by Animesh | [LinkedIn](https://www.linkedin.com/in/animesh-singh11)| [website](https://share.streamlit.io/app/animesh11portfolio/)")
 
-nlp = spacy.load("en_core_web_sm")
 st.sidebar.image("Screenshot 2023-09-19 201338.png")
 st.sidebar.header("About this App")
 st.sidebar.write(
@@ -54,7 +57,7 @@ with st.sidebar.expander("How it works  ❓️"):
         - Listen Audio -Listen to transcribed text.
         - summarize  text using pysummarization
         - analyze sentiments of text  and get insights using **textBlob** ,**nltk**
-        
+
 
         """)
 st.sidebar.markdown("<p style='color:red;'>*"
@@ -71,12 +74,13 @@ def get_supported_languages():
 
 
 # Load the spaCy model
-def keywords(transcribed_text):
-    # Process the text
-    doc = nlp(transcribed_text)
-    # Extract keywords
-    keywor = [token.text for token in doc if not token.is_stop and token.is_alpha]
-    return keywor
+def keywords(text):
+    tokens = word_tokenize(text)
+    tokens = [word.lower() for word in tokens if word.isalnum()]
+    stop_words = set(stopwords.words('english'))
+    filtered_tokens = [word for word in tokens if word not in stop_words and len(word) > 3]
+    filtered_tokens = set(filtered_tokens)
+    return filtered_tokens
 
 
 supported_languages = get_supported_languages()
@@ -206,7 +210,7 @@ def validate_youtube_link(link):
     try:
         yt = YouTube(link)
         video = yt.title
-
+        return True
     except VideoUnavailable:
         st.error("Invalid YouTube video link. The video is unavailable.")
     except Exception as e:
