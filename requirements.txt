@@ -2,7 +2,6 @@ streamlit
 moviepy
 pytube3
 spacy
-en-core-web-sm
 gtts
 google-cloud-translate
 pysummarization
