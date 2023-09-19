@@ -1,0 +1,10 @@
+streamlit
+moviepy
+pytube3
+spacy
+gtts
+google-cloud-translate
+pysummarization
+assemblyai
+textblob
+plotly
