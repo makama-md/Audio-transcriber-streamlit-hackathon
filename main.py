@@ -26,7 +26,7 @@ nltk.download('punkt')
 nltk.download('stopwords')
 # Streamlit app title and description
 st.title("🔊Audio Transcriber 🖹 and Analysis Tool")
-api_key= st.text_input("Enter YouTube video URL:")
+api_key= st.text_input("Enter Assembly AI API key:")
 aai.settings.api_key = api_key
 st.markdown(
     " &#160; &#160; &#160;Made by Animesh | [LinkedIn](https://www.linkedin.com/in/animesh-singh11)| [website](https://share.streamlit.io/app/animesh11portfolio/)")
