@@ -14,8 +14,7 @@ import os
 import assemblyai as aai
 import tempfile
 
-api_key = "36afd263f766445d9410a1dfde342559"
-aai.settings.api_key = "36afd263f766445d9410a1dfde342559"
+
 from textblob import TextBlob
 import plotly.express as px
 import nltk
@@ -27,6 +26,8 @@ nltk.download('punkt')
 nltk.download('stopwords')
 # Streamlit app title and description
 st.title("🔊Audio Transcriber 🖹 and Analysis Tool")
+api_key= st.input("Enter Assembly AI api key")
+aai.settings.api_key = api_key
 st.markdown(
     " &#160; &#160; &#160;Made by Animesh | [LinkedIn](https://www.linkedin.com/in/animesh-singh11)| [website](https://share.streamlit.io/app/animesh11portfolio/)")
 
